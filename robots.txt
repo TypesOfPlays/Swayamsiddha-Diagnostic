@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://typesofplays.github.io/Swayamsiddha-Diagnostic/sitemap.xml
+
+# Disallow admin or temp files (none currently, but good practice)
+Disallow: /tmp/
+Disallow: /*.log$
