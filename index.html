@@ -1,9 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-IN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- ===== THEME INIT (PREVENT FOUC) ===== -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 
    <!-- ===== PRIMARY SEO ===== -->
 
@@ -295,6 +305,9 @@
                 <a href="#facility" role="menuitem">Facility</a>
                 <a href="#services" role="menuitem">Services</a>
                 <a href="#technology" role="menuitem">Technology</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
                 <a href="#contact" role="menuitem" class="nav-cta">Contact Us</a>
             </div>
         </nav>
@@ -312,6 +325,7 @@
                 <div class="orb orb-2"></div>
                 <div class="orb orb-3"></div>
                 <div class="grid-overlay"></div>
+        </div>
             </div>
             <div class="particles" id="particles" aria-hidden="true"></div>
 

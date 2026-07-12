@@ -168,3 +168,37 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.45 });
 
 sections.forEach(s => sectionObserver.observe(s));
+
+// ===== THEME TOGGLE (DARK MODE) =====
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle?.querySelector('i');
+
+function setTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon?.classList.replace('fa-moon', 'fa-sun');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon?.classList.replace('fa-sun', 'fa-moon');
+    }
+}
+
+// Initial theme setup is handled in head to prevent FOUC, but we need to set icon state here
+const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+if (currentTheme === 'dark') {
+    themeIcon?.classList.replace('fa-moon', 'fa-sun');
+}
+
+themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+// Listen for system theme changes if no explicit preference is set
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+    }
+});
