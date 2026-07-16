@@ -527,6 +527,13 @@ ul {
   color: var(--heading);
   letter-spacing: -0.5px;
 }
+.logo-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+}
 .logo i {
   font-size: 1.5rem;
 }
